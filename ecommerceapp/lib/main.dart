@@ -1,10 +1,4 @@
 
-// import 'package:ecommerceapp/home.dart';
-// import 'package:ecommerceapp/slider.dart';
-
-
-
-import 'package:ecommerceapp/home.dart';
 import 'package:ecommerceapp/slider.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:HomeView(),
+      home:SliderCarousel(),
 
     );
   }

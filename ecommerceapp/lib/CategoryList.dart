@@ -18,33 +18,44 @@ class CategoryList extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
+Widget build(BuildContext context) {
+  return SingleChildScrollView(
+    scrollDirection: Axis.horizontal, // Enable horizontal scrolling
+    child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         for (Category category in categories)
-          ElevatedButton(
-            onPressed: () {
-              onCategorySelected(category.id);
-            },
-            style: ElevatedButton.styleFrom(
-              // ignore: deprecated_member_use
-              primary: Colors.black, // Change button background color
-              // ignore: deprecated_member_use
-              onPrimary: Colors.white, // Change text color
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20), // Round the corners
+          Container(
+            margin: const EdgeInsets.all(8.0), // Add margin here
+            child: ElevatedButton(
+              onPressed: () {
+                onCategorySelected(category.id);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xffFFC83A), // Change button background color
+                foregroundColor: Colors.black, // Change text color
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20), // Round the corners
+                  // Add border
+                  side: const BorderSide(
+                    color: const Color(0xffFFC83A), // Border color
+                    width: 1.0, // Border width
+                  ),
+                ),
+                // Change the height and width of the button
+                minimumSize: const Size(140, 40), // Adjust the size as needed
               ),
-            ),
-            child: Text(
-              category.title.toUpperCase(), // Change category title and make it uppercase
-              style: TextStyle(
-                fontSize: 16, // Adjust font size
-                fontWeight: FontWeight.bold, // Apply bold style
+              child: Text(
+                category.title, // Change category title and make it uppercase
+                style: const TextStyle(
+                  fontSize: 14, // Adjust font size
+                  fontWeight: FontWeight.normal, // Apply bold style
+                ),
               ),
             ),
           ),
       ],
-    );
-  }
+    ),
+  );
+}
 }

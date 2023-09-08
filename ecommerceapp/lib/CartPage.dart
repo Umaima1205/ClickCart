@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'models/Products.dart';
 import 'OrderPage.dart';
-import 'home.dart';
+
 
 class CartPage extends StatefulWidget {
   final List<Product> cartItems;
@@ -15,14 +15,12 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   double totalAmount = 0;
 
-  // Calculate the total amount when the widget is initialized
   @override
   void initState() {
     super.initState();
     calculateTotalAmount();
   }
 
-  // Calculate the total amount by iterating through cart items
   void calculateTotalAmount() {
     totalAmount = 0;
     for (final product in widget.cartItems) {
@@ -34,7 +32,7 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(
           color: Colors.grey[800],
@@ -42,7 +40,7 @@ class _CartPageState extends State<CartPage> {
         title: Text(
           'My Cart',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.grey[800],
           ),
@@ -52,17 +50,37 @@ class _CartPageState extends State<CartPage> {
         itemCount: widget.cartItems.length,
         itemBuilder: (context, index) {
           final product = widget.cartItems[index];
-          return ListTile(
-            title: Text(product.title),
-            subtitle: Text('\$${product.price.toStringAsFixed(2)}'),
-            trailing: IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {
-                setState(() {
-                  widget.cartItems.remove(product);
-                  calculateTotalAmount(); // Recalculate total amount
-                });
-              },
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Card(
+              elevation: 2,
+              child: ListTile(
+                title: Text(
+                  product.title,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Text(
+                  '\$${product.price.toStringAsFixed(2)}',
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+                trailing: IconButton(
+                  icon: Icon(
+                    Icons.delete,
+                    color: const Color.fromARGB(255, 201, 24, 12),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      widget.cartItems.remove(product);
+                      calculateTotalAmount();
+                    });
+                  },
+                ),
+              ),
             ),
           );
         },
@@ -72,6 +90,7 @@ class _CartPageState extends State<CartPage> {
         padding: EdgeInsets.all(16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,14 +99,14 @@ class _CartPageState extends State<CartPage> {
                   'Total Amount:',
                   style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
                 Text(
                   '\$${totalAmount.toStringAsFixed(2)}',
                   style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
               ],
@@ -95,7 +114,6 @@ class _CartPageState extends State<CartPage> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Implement checkout logic here
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -106,16 +124,16 @@ class _CartPageState extends State<CartPage> {
                 );
               },
               child: const Text(
-                'Checkout',
+                'Place Order',
                 style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue, // Change button color as needed
-                onPrimary: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 32),
+                backgroundColor:  const Color(0xff2A4BA0),
+                foregroundColor: Colors.white,
+                padding: EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
@@ -127,4 +145,3 @@ class _CartPageState extends State<CartPage> {
     );
   }
 }
-
