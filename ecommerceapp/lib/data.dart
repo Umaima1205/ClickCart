@@ -65,7 +65,7 @@ List<Product> products = [
 
    Product(
     id: 6,
-    title: 'LED Nightstand Bedside Table ',
+    title: 'LED Table ',
     description: 'Nightstand with LED Lights: Our night stand features built-in LED lights with a variety of color options, eliminating the need for additional night lights while providing convenient illumination to meet your nighttime needs. The soft and adjustable lighting creates a cozy and relaxed atmosphere, High-Quality Craftsmanship: Made from durable and high-quality MDF material, this end table is sturdy and long-lasting, ensuring years of use. Additionally, the smooth surface of the tabletop is easy to clean and maintain with just a damp cloth.',
     price: 99.99 ,
     imageUrl: 'https://m.media-amazon.com/images/I/814zKpjxJjL._AC_SX425_.jpg',
@@ -76,10 +76,10 @@ List<Product> products = [
 
   Product(
     id: 7,
-    title: 'Bluetooth Earbuds',
-    description: 'OPTIMAL PERFORMANCE — Customizable equalizer and bass boost for powerful sound. Use only one earbud with Mono Mode. Each earbud offers up to 7 hours battery; up to 28 hours of battery life total with the case and fast-charge, SEAMLESS CONNECTION VIA BLUETOOTH 5.2. — Connect your Android phone with Google Fast Pair, quickly play your songs with Spotify Tap Playback or ask Alexa (Android 6.0 or higher), Siri or Google Assistant whilst on-the-run.',
-    price: 79.99,
-    imageUrl: 'https://m.media-amazon.com/images/I/411NxOSWI5L._AC_UY218_.jpg',
+    title: 'Wireless Airbuds',
+    description: 'Brand	Corsair,Model Name	VIRTUOUSO RGB Wireless, Color	White, Form Factor	Over Ear, Connectivity Technology	Wireless',
+    price: 149.99,
+    imageUrl: 'https://m.media-amazon.com/images/I/615JIy+K9FL._AC_UY218_.jpg',
     CategoryId: 3, 
     isFavourite: true,
    // Associate this product with a category
@@ -110,10 +110,10 @@ List<Product> products = [
 
   Product(
     id: 10,
-    title: 'Security Camera for Baby Monitor',
+    title: 'Security Camera',
     description: '【Works w/ Alexa & Google Assistant】Fully compatible with Amazon Alexa and Google Assistant, use your simple voice command to view Tapo indoor security camera live stream on Echo Show or Google Chrome Cast with a screen. Easily get your home security footage up on a larger TV display.',
     price: 27.99,
-    imageUrl: 'https://m.media-amazon.com/images/I/61axT2Q1KTL._AC_UY218_.jpg',
+    imageUrl: 'https://m.media-amazon.com/images/I/61VhJEchChL._AC_UY218_.jpg',
     CategoryId: 3, 
     isFavourite: true,
    // Associate this product with a category
@@ -132,10 +132,10 @@ List<Product> products = [
 
   Product(
     id: 12,
-    title: 'Sony Speaker',
+    title: 'Bluetooth Speaker',
     description: 'Massive 4" Drivers – Arena 3 uses an organic fiber cone to accurately output a full range of crystal-clear highs, vibrant mids, and powerful lows with a front-firing bass port for total gaming immersion, Easy Connectivity – PC wired, Aux, and wired headset support allow wide compatibility to enjoy rich sound with your devices.',
-    price: 87,
-    imageUrl: 'https://m.media-amazon.com/images/I/71SkRGw+cKL._AC_UY218_.jpg',
+    price: 187,
+    imageUrl: 'https://m.media-amazon.com/images/I/7187Dh8eEhL._AC_UY218_.jpg',
     CategoryId: 3, 
     isFavourite: false,
    // Associate this product with a category
@@ -154,7 +154,7 @@ List<Product> products = [
 
   Product(
     id: 14,
-    title: 'Chocolate Gold Gift Box',
+    title: 'Chocolate Gift Box',
     description: 'Godiva Chocolatier Assorted Chocolate Gold Gift Box, 8 Count, 3.3 ounces',
     price: 5,
     imageUrl: 'https://m.media-amazon.com/images/I/61C0SQqiCmL._SX569_.jpg',
