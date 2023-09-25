@@ -4,6 +4,7 @@ import 'package:myproject/screens/Favourite.dart';
 import 'CartPage.dart';
 import 'package:myproject/data/productdata.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:myproject/utilities/app_colors.dart';
 
 class ProductDetailPage extends StatefulWidget {
   final Product product;
@@ -58,28 +59,29 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xff2A4BA0),
-        title: const Text(
-          "Hey, User",
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.grey[800],
+        ),
+        title:  Text(
+           widget.product.title,
           style: TextStyle(
-            fontSize: 18,
-            letterSpacing: 1,
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            color: Colors.black,
           ),
         ),
-        toolbarHeight: 80,
-        elevation: 0,
+        toolbarHeight: 70,
         actions: [
           Stack(
             alignment: Alignment.center,
             children: [
               IconButton(
                 icon: const Icon(
-                  Icons.shopping_cart,
+                  Icons.shopping_cart_outlined,
                   size: 25.0,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 onPressed: navigateToCartPage,
               ),
@@ -88,7 +90,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   top: 8,
                   right: 8,
                   child: CircleAvatar(
-                    backgroundColor: const Color(0xffFFC83A),
+                    backgroundColor: AppColors.Color_Yellow,
                     radius: 8,
                     child: Text(
                       getCartItemCount().toString(),
@@ -128,53 +130,60 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             widget.product.title,
                             style: const TextStyle(
                               fontSize: 20,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Manrope',
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          const SizedBox(width: 8), // Add spacing
+                          const SizedBox(width: 100), // Add spacing
                           IconButton(
                             onPressed: () {
                               toggleFavorite();
                             },
                             icon: Icon(
                               Icons.favorite,
-                              color: isFavorite()
-                                  ? Colors.red
-                                  : Colors.grey,
+                              color: isFavorite() ? Colors.red : Colors.grey,
+                              size: 30,
                             ),
                           ),
                         ],
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Text(
-                        '\$${widget.product.price.toStringAsFixed(2)}',
-                        style: const TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                      const SizedBox(width: 8), // Add spacing
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.grey,
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 6),
-                        child: Text(
-                          'Your Text',
-                          style: const TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+               const SizedBox(height: 8),
+Row(
+  children: [
+    Text(
+      '\$${widget.product.price.toStringAsFixed(2)}',
+      style: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: AppColors.Color_Blue,
+      ),
+    ),
+    const SizedBox(width: 8), // Add spacing
+    Container(
+      height: 24,
+      width: 84,
+      decoration: BoxDecoration(
+        color: AppColors.Color_Blue,
+        borderRadius: BorderRadius.circular(70),
+      ),
+      margin: EdgeInsets.only(left:10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2), // Adjust padding here
+      child:Center(
+      child: const Text(
+        '10% Off',
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: Colors.white,
+        ),
+      ),
+    ),
+    ),
+  ],
+),
+
                   const SizedBox(height: 16),
                   // Row for rating and text box with border radius
                   Row(
@@ -185,34 +194,49 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           for (int i = 0; i < 5; i++)
                             Icon(
                               Icons.star,
-                              color: i < 4 ? Colors.yellow : Colors.grey,
+                              color: i < 4 ? Colors.yellow : Colors.black45,
                               size: 24,
                             ),
                           const SizedBox(width: 8), // Add spacing
-                          Text(
-                            '4.5',
-                            style: const TextStyle(
-                              fontSize: 16,
+                          const Text(
+                            '4.5 Rating',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xffA1A1AB),
                             ),
                           ),
                         ],
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Description:',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    descriptionToShow,
-                    style: const TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
+            const SizedBox(height: 16),
+
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 5), // Adjust the horizontal padding as needed
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const Text(
+        'Product Details:',
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: Color(0xff1E222B),
+        ),
+      ),
+      const SizedBox(height: 10), // Add vertical spacing as needed
+      Text(
+        descriptionToShow,
+        style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: Color(0xff8891A5),
+        ),
+      ),
+    ],
+  ),
+),
                   widget.product.description.length > 100
                       ? TextButton(
                           onPressed: () {
@@ -223,7 +247,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           child: Text(
                             showFullDescription ? "See Less" : "See More",
                             style: const TextStyle(
-                              color: Color(0xff2A4BA0),
+                              color: AppColors.Color_Blue,
                               fontWeight: FontWeight.normal,
                             ),
                           ),
@@ -241,11 +265,11 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
+              height: 60,
+              width: 170,
               decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                ),
-                borderRadius: BorderRadius.circular(10),
+                color: AppColors.Color_Blue,
+                borderRadius: BorderRadius.circular(20),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               child: TextButton(
@@ -266,7 +290,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             child: const Text(
                               'OK',
                               style: TextStyle(
-                                color: Color(0xff2A4BA0),
+                                color: AppColors.Color_Blue
+                           
                               ),
                             ),
                           ),
@@ -278,19 +303,24 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 child: const Text(
                   "Add To Cart",
                   style: TextStyle(
-                    fontSize: 16,
-                  ),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    
+                      color: Colors.white),
                 ),
               ),
             ),
             Container(
+              height: 60,
+              width: 170,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.grey,
+                  color: AppColors.Color_Blue,
+                  width: 1.0,
                 ),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(20),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
@@ -303,7 +333,10 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 child: const Text(
                   "View WishList",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                
+                    color: AppColors.Color_Blue,
                   ),
                 ),
               ),
@@ -333,7 +366,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => CartPage(cartItems: cartItems ) ,
+        builder: (context) => CartPage(cartItems: cartItems),
       ),
     );
   }
@@ -342,4 +375,3 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     return cartItems.length;
   }
 }
-

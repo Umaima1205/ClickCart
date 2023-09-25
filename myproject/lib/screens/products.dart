@@ -22,10 +22,10 @@ class _ProductGridItemState extends State<ProductGridItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4,
+      elevation: 5,
       child: GridTile(
         child: ClipRRect(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(0.0)),
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(0.0)),
           child: Image.network(
             widget.product.imageUrl,
             fit: BoxFit.cover,
@@ -36,7 +36,7 @@ class _ProductGridItemState extends State<ProductGridItem> {
           title: Text(
             widget.product.title,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Colors.white,

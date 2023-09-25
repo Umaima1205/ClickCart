@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myproject/models/Products.dart';
+import 'package:myproject/screens/Favourite.dart';
+import 'package:myproject/screens/OrderPageView.dart';
 import '../screens/homepage.dart';
-import '../screens/fourthscreen.dart';
+
 import '../screens/productView.dart';
 
 
@@ -17,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+    List<Product> favItems = [];
   int activeTab = 0;
   Widget currentScreen = const HomeView();
   @override
@@ -61,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   activeTab = 2;
                   setState(() {
-                    currentScreen = const FourthScreen();
+                    currentScreen =  FavoritesPage(favItems: favItems);
                   });
                 },
                 child: Icon(
@@ -74,11 +78,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   setState(() {
                     activeTab = 3;
-                    currentScreen = const FourthScreen();
+                    currentScreen =  ViewOrdersPage();
                   });
                 },
                 child: Icon(
-                  Icons.menu,
+                  Icons.account_box_outlined,
                   color: activeTab == 3 ? const Color(0xff2A4BA0) : Colors.black,
                 ),
               ),

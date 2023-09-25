@@ -3,7 +3,7 @@ import 'package:myproject/data/productdata.dart';
 import '../models/Products.dart';
 import 'CartPage.dart';
 import 'ProductDetail.dart';
-import 'package:myproject/models/checkout.dart';
+
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _HomeViewState extends State<HomeView> {
   String deliveryLocation = "Gulshan-e-Iqbal, Karachi";
   String deliveryTime = "1 Day";
  List favItems = [];
- late final List<Address> addresses; 
+ 
   int selectedCategoryId = 0;
   List<Product> cartItems = [];
 
@@ -61,6 +61,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+         backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xff2A4BA0),
         title: const Text(
@@ -247,19 +248,23 @@ class _HomeViewState extends State<HomeView> {
               ],
             ),
           ),
-          const Center(
-            child: Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "Our Shop",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
+         Row(
+  mainAxisAlignment: MainAxisAlignment.start, // Align the contents to the left
+  children: [
+    Padding(
+      padding: EdgeInsets.all(15.0),
+      child: Text(
+        "Recommended",
+        style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.w400,
+          color: Colors.black,
+        ),
+      ),
+    ),
+  ],
+),
+
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.all(15.0),
@@ -278,7 +283,7 @@ class _HomeViewState extends State<HomeView> {
                   },
                   child: Card(
                     color: const Color(0xffF8F9FB),
-                    elevation: 4,
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
@@ -322,27 +327,7 @@ class _HomeViewState extends State<HomeView> {
                               ),
                           ],
                         ),
-                //         Positioned(
-                //           top: 0,
-                //           right: 0,
-                //           child:   IconButton(
-                //   onPressed: () {
-                //     setState(() {
-                //       if (product.isFavourite) {
-                //        product.isFavourite = false;
-                //         favItems.remove(products[index]);
-                //       } else {
-                //         product.isFavourite = true;
-                //         favItems.add(products[index]);
-                //       }
-                //     });
-                //   },
-                //   icon: Icon(
-                //     Icons.favorite,
-                //     color:product.isFavourite ? Colors.red : Colors.grey,
-                //   ),
-                // ),
-                        // ),
+
                         Positioned(
                           bottom: 0,
                           left: 0,
@@ -350,7 +335,7 @@ class _HomeViewState extends State<HomeView> {
                           child: Center(
                             child: Container(
                               margin: EdgeInsets.symmetric(
-                                  vertical: 15.0), // Adjust margin as needed
+                                  vertical: 10.0), // Adjust margin as needed
                               child: SizedBox(
                                 height: 30,
                                 width: 120,
@@ -430,18 +415,33 @@ class _HomeViewState extends State<HomeView> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: EdgeInsets.all(3.0),
-            child: Text(
-              heading,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                color: Colors.black,
-              ),
-            ),
+Padding(
+  padding: EdgeInsets.all(3.0),
+  child: RichText(
+    textAlign: TextAlign.center,
+    text: TextSpan(
+      children: <TextSpan>[
+        TextSpan(
+          text: heading.split(' ')[0], // First word
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w800, // Make it bold
+            color: Colors.black,
           ),
+        ),
+        TextSpan(
+          text: ' ${heading.split(' ').skip(1).join(' ')}', // Remaining text
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w300, // Adjust the font weight as needed
+            color: Colors.black,
+          ),
+        ),
+      ],
+    ),
+  ),
+),
+
           Padding(
             padding: const EdgeInsets.all(3.0),
             child: Text(

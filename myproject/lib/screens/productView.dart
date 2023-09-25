@@ -44,10 +44,6 @@ class _ProductScreenState extends State<ProductScreen> {
     );
   }
 
-  // Placeholder function for toggling favorite status
-  void toggleFavorite(Product product) {
-    // Implement the logic to toggle the favorite status here
-  }
 
   // Function to navigate to the product detail page
   void navigateToProductDetail(Product product) {
@@ -69,6 +65,7 @@ class _ProductScreenState extends State<ProductScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: const Color(0xff2A4BA0),
           title: const Text(
@@ -147,7 +144,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       "By Category",
                       style: TextStyle(
                         fontSize: 50,
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w700,
                         color: Colors.white,
                         letterSpacing: 1,
                         fontFamily: 'Manrope',
@@ -184,7 +181,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     child: Card(
                       color: const Color(0xffF8F9FB),
 
-                      elevation: 4,
+                      elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0),
                       ),
@@ -231,21 +228,21 @@ class _ProductScreenState extends State<ProductScreen> {
                               ),
                             ],
                           ),
-                          // Positioned(
-                          //   top: 0,
-                          //   right: 0,
-                          //   child: IconButton(
-                          //     icon: Icon(
-                          //       product.isFavourite
-                          //           ? Icons.favorite
-                          //           : Icons.favorite_border,
-                          //       color: product.isFavourite
-                          //           ? Colors.red
-                          //           : Colors.red,
-                          //     ),
-                          //     onPressed: () {},
-                          //   ),
-                          //  ),
+                      //  Positioned(
+                      //          top: 0,
+                      //       right: 0,
+                      //       child: IconButton(
+                      //         icon: Icon(
+                      //           product.isFavourite
+                      //               ? Icons.favorite
+                      //               : Icons.favorite_border,
+                      //           color: product.isFavourite
+                      //               ? Colors.red
+                      //               : Colors.red,
+                      //         ),
+                      //         onPressed: () {},
+                      //       ),
+                      //      ),
                           Positioned(
                             bottom: 0,
                             left: 0,
@@ -253,7 +250,7 @@ class _ProductScreenState extends State<ProductScreen> {
                             child: Center(
                               child: Container(
                                 margin: EdgeInsets.symmetric(
-                                    vertical: 15.0), // Adjust margin as needed
+                                    vertical: 10.0), // Adjust margin as needed
                                 child: SizedBox(
                                   height: 30, // Set the desired height
                                   width: 120, // Set the desired width

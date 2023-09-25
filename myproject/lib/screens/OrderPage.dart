@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myproject/screens/OrderPageView.dart';
 
 import 'homePage.dart';
 
@@ -39,29 +40,61 @@ class OrderConfirmationPage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             
-            BounceButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeView()),
-                );
-              },
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                decoration: BoxDecoration(
-                  color:  const Color(0xff2A4BA0), // Button background color
-                  borderRadius: BorderRadius.circular(25), // Button border radius
-                ),
-                child: Text(
-                  'Back to Home',
-                  style: TextStyle(
-                    color: Colors.white, // Text color
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500
-                  ),
-                ),
-              ),
-            ),
+          BounceButton(
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomeView()),
+    );
+  },
+  child: Container(
+    width: 180, // Set the width of the button
+    height: 50, // Set the height of the button
+    margin: EdgeInsets.only(bottom: 10), // Add margin between buttons
+    decoration: BoxDecoration(
+      color: const Color(0xff2A4BA0),
+      borderRadius: BorderRadius.circular(25),
+    ),
+    child: Center(
+      child: Text(
+        'Back to Home',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+          fontWeight: FontWeight.w500
+        ),
+      ),
+    ),
+  ),
+),
+
+           BounceButton(
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ViewOrdersPage()),
+    );
+  },
+  child: Container(
+    width: 180, // Set the width of the button
+    height: 50, // Set the height of the button
+    margin: EdgeInsets.only(bottom: 10), // Add margin between buttons
+    decoration: BoxDecoration(
+      color: const Color(0xff2A4BA0),
+      borderRadius: BorderRadius.circular(25),
+    ),
+    child: Center(
+      child: Text(
+        'View Orders',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+          fontWeight: FontWeight.w500
+        ),
+      ),
+    ),
+  ),
+),
           ],
         ),
       ),
